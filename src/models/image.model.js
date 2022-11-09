@@ -4,10 +4,14 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false
         },
-        url_image: {
+        product_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
+        file: {
             type: Sequelize.STRING,
             allowNull: false
-        }
+        },
     })
 
     return Image

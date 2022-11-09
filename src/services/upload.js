@@ -5,7 +5,7 @@ const path   = require('path');
 const __basedir   = path.resolve();
 
 const imageFilter = (req, file, cb) => {
-    if (file.mimetype.starsWith('image')) {
+    if (file.mimetype.startsWith('image')) {
         cb(null, true);
     }else{
         cb('please upload only image.', false);
@@ -30,4 +30,7 @@ const uploadImage = multer({
 
 let uploadFile = util.promisify(uploadImage);
 
-module.exports = uploadFile;
+module.exports = {
+    uploadFile,
+    __basedir
+}
