@@ -44,3 +44,27 @@ exports.index = (req, res) => {
         })
     })
 }
+
+exports.show = (req, res) => {
+    const id = req.params.id;
+
+    Product.findByPk(id).then((result) => {
+        if (result.user_id !== req.userId) {
+            res.status(401).json({
+                message: 'unauthorized data product'
+            })
+
+            return
+        }
+
+        res.status(200).json({
+            data: result,
+            message: 'show product'
+        })
+        
+    }).catch((err) => {
+        res.status(500).json({
+            message: err.message
+        })
+    })
+}

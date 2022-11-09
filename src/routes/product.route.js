@@ -13,4 +13,5 @@ module.exports = (app) => {
 
     app.post('/api/product', middleware.verifyToken, controller.create);
     app.get('/api/product', middleware.verifyToken, controller.index);
+    app.get('/api/product/:id', middleware.verifyToken, controller.show);
 }
