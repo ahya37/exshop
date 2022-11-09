@@ -24,10 +24,14 @@ app.use(express.urlencoded({
 }));
 
 const db = require('./models');
+const seed = require('./models/seeds')
 
 db.sequelize
-    .sync({force: true})
+    // .sync({force: true})
+    .sync()
     .then(() => {
+        // seed.userSeed();
+        // seed.categorySeed();
         console.log('database connected')
     })
     .catch((err) => {
@@ -41,8 +45,12 @@ app.get('/', (req, res) => {
     })
 })
 
+require('./routes/auth.route')(app)
+require('./routes/profile.route')(app)
+
 const PORT = process.env.APP_PORT || 5000
 
 app.listen(PORT, () => {
     console.log(`server is running on port : ${PORT}`)
 });
+
