@@ -61,7 +61,47 @@ exports.show = (req, res) => {
             data: result,
             message: 'show product'
         })
-        
+
+    }).catch((err) => {
+        res.status(500).json({
+            message: err.message
+        })
+    })
+}
+
+exports.update = (req, res) => {
+    const id = req.params.id;
+
+
+    Product.findByPk(id).then((result) => {
+        if (result.user_id !== req.userId) {
+            res.status(401).json({
+                message: 'unauthorized data product'
+            })
+
+            return
+        }
+
+        Product.update(req.body, {
+            where: {
+                id: id
+            }
+        }).then((num) => {
+            if (num == 1) {
+                res.status(200).json({
+                    message: 'product updated successfully'
+                })
+            } else {
+                res.status(400).json({
+                    message: `cannot updated product with id ${id}`
+                })
+            }
+        }).catch((err) => {
+            res.status(500).json({
+                message: err.message
+            })
+        })
+
     }).catch((err) => {
         res.status(500).json({
             message: err.message
