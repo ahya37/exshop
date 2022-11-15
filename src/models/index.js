@@ -13,4 +13,12 @@ db.product.hasMany(db.image, {
     foreignKey: 'product_id'
 })
 
+db.category.hasMany(db.product,  {
+    foreignKey: 'category_id'
+})
+
+db.user.hasMany(db.product, {
+    foreignKey: 'user_id'
+})
+
 module.exports = db;

@@ -49,6 +49,7 @@ require('./routes/auth.route')(app)
 require('./routes/profile.route')(app)
 require('./routes/product.route')(app)
 require('./routes/upload.route')(app)
+require('./routes/ads.route')(app)
 
 const PORT = process.env.APP_PORT || 5000
 
