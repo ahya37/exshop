@@ -9,4 +9,8 @@ db.category = (categories)(db.sequelize, db.Sequelize);
 db.product = (products)(db.sequelize, db.Sequelize);
 db.image = (image)(db.sequelize, db.Sequelize);
 
+db.product.hasMany(db.image, {
+    foreignKey: 'product_id'
+})
+
 module.exports = db;
