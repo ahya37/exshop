@@ -21,4 +21,8 @@ db.user.hasMany(db.product, {
     foreignKey: 'user_id'
 })
 
+db.product.belongsTo(db.user,{
+    foreignKey: 'user_id'
+})
+
 module.exports = db;

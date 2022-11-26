@@ -1,6 +1,9 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const path = require('path');
+
+const __basedir = path.resolve();
 
 const app = express();
 dotenv.config()
@@ -22,6 +25,9 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
+
+app.use(express.static('storage'));
+app.use('/img', express.static(__basedir + '/storage/upload'));
 
 const db = require('./models');
 const seed = require('./models/seeds')
