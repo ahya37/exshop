@@ -23,11 +23,14 @@ let corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({
-    extended: true
+    extended: false
 }));
+
 
 app.use(express.static('storage'));
 app.use('/img', express.static(__basedir + '/storage/upload'));
+
+app.set('view engine', 'ejs');
 
 const db = require('./models');
 const seed = require('./models/seeds')

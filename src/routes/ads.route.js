@@ -13,4 +13,6 @@ module.exports = (app) => {
     app.get('/api/ads/search', controller.search);
     app.get('/api/ads/random', controller.random);
     app.get('/api/ads/:id/detail', controller.detail);
+    app.get('/api/ads/pdf', controller.pdf);
+
 }
